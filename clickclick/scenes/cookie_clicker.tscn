@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://elst0xn32iil"]
+
+[ext_resource type="Script" uid="uid://c7x8ruiqyw0lk" path="res://scripts/cookiegame.gd" id="1_yqjtg"]
+[ext_resource type="FontFile" uid="uid://b38mrgxqcxl27" path="res://assets/fonts/Fredoka-Bold.ttf" id="2_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://cpciv3nb64btd" path="res://assets/img/cookie.png" id="2_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://bghyjunp176m8" path="res://scenes/fade_anim.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://cpyv81twvi52" path="res://assets/upgrade_imgs/upgrade_01.png" id="3_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://cqx8656i7uepv" path="res://assets/upgrade_imgs/upgrade_02.png" id="4_gee14"]
+[ext_resource type="FontFile" uid="uid://dmq1ttixwsi1k" path="res://assets/fonts/Fredoka-Regular.ttf" id="4_vtaks"]
+[ext_resource type="Texture2D" uid="uid://ckjjjo365gt2t" path="res://assets/upgrade_imgs/upgrade_03.png" id="5_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://dm0if1si54r0i" path="res://assets/upgrade_imgs/upgrade_04.png" id="6_vtaks"]
+
+[node name="cookie_clicker" type="Control" unique_id=150793913]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqjtg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=368704893]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=855467209]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0tnpc")
+theme_override_font_sizes/font_size = 40
+text = "0 cookies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1957633628]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="cookiebutton" type="TextureButton" parent="CenterContainer" unique_id=1470266276]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture_normal = ExtResource("2_lnu2h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=83046988]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1016.0
+offset_top = -648.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Upgrade_01" type="Button" parent="VBoxContainer2" unique_id=746023174]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vtaks")
+text = "cost:
+100"
+icon = ExtResource("3_u5sy4")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Upgrade_02" type="Button" parent="VBoxContainer2" unique_id=1533066602]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_vtaks")
+text = "cost:
+400"
+icon = ExtResource("4_gee14")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Upgrade_03" type="Button" parent="VBoxContainer2" unique_id=1210996801]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "cost:
+1000"
+icon = ExtResource("5_0tnpc")
+icon_alignment = 2
+expand_icon = true
+
+[node name="Upgrade_04" type="Button" parent="VBoxContainer2" unique_id=1838854576]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "cost:
+5000"
+icon = ExtResource("6_vtaks")
+icon_alignment = 2
+expand_icon = true
+
+[node name="fade_anim" parent="." unique_id=712741986 instance=ExtResource("3_lnu2h")]
+layout_mode = 0
+
+[connection signal="button_down" from="CenterContainer/cookiebutton" to="." method="_on_cookiebutton_button_down"]
+[connection signal="pressed" from="VBoxContainer2/Upgrade_01" to="." method="_on_Upgrade_01_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Upgrade_02" to="." method="_on_upgrade_02_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Upgrade_03" to="." method="_on_upgrade_03_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Upgrade_04" to="." method="_on_upgrade_04_pressed"]

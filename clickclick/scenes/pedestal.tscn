@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b04065r0ugdj"]
+
+[ext_resource type="Texture2D" uid="uid://cyph5l3dijvkp" path="res://assets/3d_assets/color_pedestal.png" id="1_aedhk"]
+[ext_resource type="ArrayMesh" uid="uid://bcuaxmp0aa20" path="res://assets/3d_assets/pedestal.obj" id="1_bs3ok"]
+[ext_resource type="Script" uid="uid://ch3wfxomb8nlw" path="res://scripts/pedestal_temp.gd" id="1_vgg7g"]
+[ext_resource type="PackedScene" uid="uid://bghyjunp176m8" path="res://scenes/fade_anim.tscn" id="4_khilp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgg7g"]
+albedo_texture = ExtResource("1_aedhk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huw6o"]
+size = Vector3(1, 0.09861755, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yf5fn"]
+size = Vector3(0.31726074, 0.8944092, 0.30700684)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_57qmd"]
+size = Vector3(1, 0.115112305, 1.0037842)
+
+[node name="Pedestal" type="StaticBody3D" unique_id=489466912]
+script = ExtResource("1_vgg7g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=649448113]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_vgg7g")
+mesh = ExtResource("1_bs3ok")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=98797027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04948771, 0)
+shape = SubResource("BoxShape3D_huw6o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=559744755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0051879883, 0.4496888, 0.0022583008)
+shape = SubResource("BoxShape3D_yf5fn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1225740047]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, 0, 0.9986238, 0.0016316324)
+shape = SubResource("BoxShape3D_57qmd")
+
+[node name="fade_anim" parent="." unique_id=712741986 instance=ExtResource("4_khilp")]
+visible = false
+
+[node name="fade_timer" type="Timer" parent="fade_anim" unique_id=1165188146]
+
+[connection signal="timeout" from="fade_anim/fade_timer" to="." method="_on_fade_timer_timeout"]

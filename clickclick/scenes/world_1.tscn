@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ckgbeuw0y8gwt"]
+
+[ext_resource type="PackedScene" uid="uid://bpmw3aytqcq8u" path="res://scenes/player.tscn" id="1_5lqpt"]
+[ext_resource type="PackedScene" uid="uid://b04065r0ugdj" path="res://scenes/pedestal.tscn" id="1_gawm5"]
+[ext_resource type="Texture2D" uid="uid://cfpxcyr2tnvi3" path="res://assets/img/crosshair.png" id="3_4eyuj"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_g4v7s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5lqpt"]
+albedo_color = Color(0.33688417, 0.52929485, 0.27967066, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5lqpt"]
+material = SubResource("StandardMaterial3D_5lqpt")
+
+[node name="World_1" type="Node3D" unique_id=1754351423]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=128013634]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=581991027]
+shape = SubResource("WorldBoundaryShape3D_g4v7s")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=600403105]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_5lqpt")
+
+[node name="Pedestal" parent="StaticBody3D" unique_id=489466912 instance=ExtResource("1_gawm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00030064583, 0.1, -2.2329278)
+
+[node name="Player" parent="." unique_id=519998486 instance=ExtResource("1_5lqpt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8928201, 0.8860569, 0.70708656)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1437136511]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9076166, 0)
+omni_range = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1323688343]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1124506414]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4eyuj")
+expand_mode = 1

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://crev2inf1u6xe"]
+
+[ext_resource type="Script" uid="uid://cxcsfvqvqtlfc" path="res://scripts/main_menu.gd" id="1_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://bmnrkb5nttaww" path="res://assets/img/start.png" id="2_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://b5v8qss04u3eu" path="res://assets/img/start_selected.png" id="3_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://bwiclc0cvea8r" path="res://assets/img/options.png" id="4_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://bxndhp1d18af3" path="res://assets/img/options_selected.png" id="5_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://cyuyyrt4ruww5" path="res://assets/img/quit.png" id="6_flqon"]
+[ext_resource type="Texture2D" uid="uid://c8xt6yht86du" path="res://assets/img/quit_selected.png" id="7_rcqid"]
+[ext_resource type="PackedScene" uid="uid://bghyjunp176m8" path="res://scenes/fade_anim.tscn" id="8_jk1qb"]
+
+[node name="Main Menu" type="Node2D" unique_id=268137141]
+script = ExtResource("1_tbmy8")
+
+[node name="Button_manager" type="Control" parent="." unique_id=626166102]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="Button_manager" unique_id=1012898249]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 320.0
+offset_right = 810.0
+offset_bottom = 174.0
+texture_normal = ExtResource("2_tbmy8")
+texture_pressed = ExtResource("3_jk1qb")
+texture_hover = ExtResource("3_jk1qb")
+ignore_texture_size = true
+
+[node name="Options" type="TextureButton" parent="Button_manager" unique_id=1006962547]
+layout_mode = 0
+offset_left = 341.0
+offset_top = 194.0
+offset_right = 853.0
+offset_bottom = 412.0
+texture_normal = ExtResource("4_5dd4i")
+texture_pressed = ExtResource("5_lgwnu")
+texture_hover = ExtResource("5_lgwnu")
+ignore_texture_size = true
+
+[node name="Quit" type="TextureButton" parent="Button_manager" unique_id=829684541]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 412.0
+offset_right = 835.0
+offset_bottom = 641.0
+texture_normal = ExtResource("6_flqon")
+texture_pressed = ExtResource("7_rcqid")
+texture_hover = ExtResource("7_rcqid")
+ignore_texture_size = true
+
+[node name="fade_anim" parent="." unique_id=712741986 instance=ExtResource("8_jk1qb")]
+visible = false
+
+[node name="fade_timer" type="Timer" parent="fade_anim" unique_id=1234105705]
+
+[connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_manager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button_manager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="fade_anim/fade_timer" to="." method="_on_fade_timer_timeout"]

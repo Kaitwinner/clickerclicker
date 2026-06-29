@@ -67,7 +67,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vtaks")
 text = "cost:
-100"
+10"
 icon = ExtResource("3_u5sy4")
 icon_alignment = 2
 expand_icon = true
@@ -77,7 +77,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_vtaks")
 text = "cost:
-400"
+100"
 icon = ExtResource("4_gee14")
 icon_alignment = 2
 expand_icon = true
@@ -86,25 +86,26 @@ expand_icon = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "cost:
-1000"
+200"
 icon = ExtResource("5_0tnpc")
 icon_alignment = 2
 expand_icon = true
 
-[node name="Upgrade_04" type="Button" parent="VBoxContainer2" unique_id=1838854576]
+[node name="Upgrade_04" type="Button" parent="VBoxContainer2" unique_id=693868319]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "cost:
-5000"
+1500"
 icon = ExtResource("6_vtaks")
 icon_alignment = 2
 expand_icon = true
 
 [node name="fade_anim" parent="." unique_id=712741986 instance=ExtResource("3_lnu2h")]
+visible = false
 layout_mode = 0
 
 [connection signal="button_down" from="CenterContainer/cookiebutton" to="." method="_on_cookiebutton_button_down"]
 [connection signal="pressed" from="VBoxContainer2/Upgrade_01" to="." method="_on_Upgrade_01_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Upgrade_02" to="." method="_on_upgrade_02_pressed"]
 [connection signal="pressed" from="VBoxContainer2/Upgrade_03" to="." method="_on_upgrade_03_pressed"]
-[connection signal="pressed" from="VBoxContainer2/Upgrade_04" to="." method="_on_upgrade_04_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Upgrade_04" to="." method="_on_upgrade_03_pressed"]
